@@ -1,6 +1,6 @@
 float2d/
 int2d/
-naray/
+inf/
 test_base/
 math/
 base_ex/
@@ -21,4 +21,6 @@ geogebra/debug/
 geogebra/release/
 naray/debug/
 naray/release/
+infrastructure/debug/
+infrastructure/release/
 
