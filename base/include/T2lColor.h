@@ -19,6 +19,8 @@
 // base
 #include "T2lTuple.h"
 
+#include <string>
+
 namespace T2l {
 
 //=============================================================================
@@ -33,6 +35,7 @@ public:
     Color(EPredef color = BLACK);
 
     static Color read(const char* color);
+    std::string write() const;
 // <METHODS>
     inline bool operator == (const Color &c) const;
     inline bool operator != (const Color &c) const;

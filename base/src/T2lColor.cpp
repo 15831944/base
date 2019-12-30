@@ -113,3 +113,11 @@ double Color::distanceSq(const Color& c1, const Color& c2)
 }
 
 //=============================================================================
+std::string Color::write() const
+{
+    char buffer[100];
+    sprintf(buffer, "%d,%d,%d", r(), g(), b());
+    return buffer;
+}
+
+//=============================================================================

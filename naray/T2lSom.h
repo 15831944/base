@@ -15,25 +15,25 @@
 //=============================================================================
 #pragma once
 
-#include <QString>
-#include <QStringList>
+#include "T2lNaray2.h"
+#include "T2lIntervalF.h"
+#include <vector>
 
-namespace T2l
-{
+namespace T2l {
 
 //=============================================================================
-class Script {
+class Naray2f : public Naray2<double> {
 //=============================================================================
 public:
 //<CONSTRUCTION>
-//<METHOD>
-    static bool        run(const char* dir, const char* id);
-    static QStringList list(const char* dir);
-    static QString     fileName(const char* dir, const char* id = "");
+    Naray2f( int d0, int d1 ) : Naray2( d0, d1 ) {}
+    virtual ~Naray2f() {}
+//<METHODS>
+    void normalize( const IntervalF& newInterval );
+    IntervalF minMax();
 //=============================================================================
-protected:
-//<HIDDING>
-    Script();
+//<OVERRIDES>
+//<DATA>
 };
 
-} //namespace T2l
+} // namespace T2l
