@@ -16,6 +16,10 @@
 //=============================================================================
 #include "T2lColor.h"
 
+#include <sstream>
+#include <iostream>
+#include <vector>
+
 using namespace T2l;
 using namespace std;
 
@@ -70,6 +74,23 @@ Color Color::read(const char* color)
     else if (c == "dgray")   C = GRAY_DARK;
     else if (c == "orange")  C = ORANGE;
     else if (c == "brown")   C = BROWN;
+    else {
+        vector<string> strings;
+        istringstream f(color);
+        string s;
+        while (getline(f, s, ',')) {
+            cout << s << endl;
+            strings.push_back(s);
+        }
+
+        if ( strings.size() == 3) {
+            int r = stoi(strings.at(0));
+            int g = stoi(strings.at(1));
+            int b = stoi(strings.at(2));
+
+            return Color(r, g, b);
+        }
+    }
 
     return Color(C);
 }
