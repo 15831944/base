@@ -34,6 +34,12 @@ public:
     int count() const { return data_.size(); }
     double sum() const;
     std::string print();
+
+    static int countCommon( const Column<T>& c1, const Column<T>& c2 );
+
+    double length() const;
+
+    bool operator>(const Column<T>& other) { length() < other.length(); }
 //=============================================================================
 //<OVERRIDES>
 //<DATA>
@@ -44,7 +50,21 @@ public:
 template<class T>
 Column<T>::Column(int size) : data_(size, 0)
 {
+
 }
+
+//=============================================================================
+template<class T>
+double Column<T>::length() const
+{
+    double result = 0;
+    for (int i = 0; i < count(); i++) {
+        double di = data_.at(i);
+        result += di*di;
+    }
+    return result;
+}
+
 
 //=============================================================================
 template<class T>
@@ -71,7 +91,12 @@ std::string Column<T>::print()
 }
 
 //=============================================================================
-typedef Column<double> ColumnF;
+template<class T>
+int Column<T>::countCommon( const Column<T>& c1, const Column<T>& c2 )
+{
+    if ( c1.count() <= c2.count() ) return c1.count();
+    return c2.count();
+}
 
 } // namespace T2l
 
